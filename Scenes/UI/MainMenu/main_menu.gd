@@ -42,7 +42,7 @@ func _on_ctf_button_pressed() -> void:
 func _on_practice_button_pressed() -> void:
 	_selected_mode = Constants.GameMode.CONQUEST  # default mode for practice
 	GameManager.start_game(_selected_mode, true)
-	UiManager.go_to_scene("res://Scenes/UI/ModeSelect/mode_select.tscn")
+	UiManager.go_to_scene("res://Scenes/Game/game.tscn")
 
 func _on_settings_button_pressed() -> void:
 	UiManager.go_to_scene("res://Scenes/UI/Settings/settings.tscn")
