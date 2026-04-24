@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://gmx5man3x555"]
+
+[ext_resource type="Script" uid="uid://0dvsoamtdgpl" path="res://Scenes/CTF/Base/base.gd" id="1_8qba5"]
+[ext_resource type="Texture2D" uid="uid://b5ufprvkvcevr" path="res://Assets/Objects/CtfBase.png" id="1_qqo8s"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_138tf"]
+size = Vector2(64, 10)
+
+[node name="Base" type="Area2D"]
+script = ExtResource("1_8qba5")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -16)
+texture = ExtResource("1_qqo8s")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -5)
+shape = SubResource("RectangleShape2D_138tf")
+
+[node name="Label" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0

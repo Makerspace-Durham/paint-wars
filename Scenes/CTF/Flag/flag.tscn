@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://b5rqjg5akh5a8"]
+
+[ext_resource type="Texture2D" uid="uid://dug8wm3o26ksc" path="res://Assets/Objects/TeamFlag.png" id="1_8pt45"]
+[ext_resource type="Script" uid="uid://d8d1mc3drlf6" path="res://Scenes/CTF/Flag/flag.gd" id="1_70box"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_70box"]
+size = Vector2(20, 32)
+
+[node name="Flag" type="Area2D"]
+script = ExtResource("1_70box")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -16)
+shape = SubResource("RectangleShape2D_70box")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -16)
+texture = ExtResource("1_8pt45")
+
+[node name="Label" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="ReturnTimer" type="Timer" parent="."]
+wait_time = 30.0
+one_shot = true

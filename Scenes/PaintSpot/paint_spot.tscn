@@ -1,0 +1,32 @@
+[gd_scene load_steps=3 format=3 uid="uid://bkmvwrf3llmos"]
+
+[ext_resource type="Script" uid="uid://dtmtebrcanuhx" path="res://Scenes/PaintSpot/paint_spot.gd" id="1_3lbuq"]
+[ext_resource type="Texture2D" uid="uid://jr548rvsxy6a" path="res://Assets/Objects/PaintWall.png" id="1_h31fo"]
+
+[node name="PaintSpot" type="Area2D"]
+script = ExtResource("1_3lbuq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -32)
+texture = ExtResource("1_h31fo")
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+offset_left = -36.0
+offset_top = -47.0
+offset_right = 35.0
+offset_bottom = -20.0
+
+[node name="CaptureTimer" type="Timer" parent="."]
+wait_time = 0.1
+
+[node name="ScoreTimer" type="Timer" parent="."]
+
+[node name="Label" type="Label" parent="."]
+offset_left = -33.0
+offset_top = -71.0
+offset_right = 33.0
+offset_bottom = -48.0
+horizontal_alignment = 1
+vertical_alignment = 1
