@@ -5,6 +5,7 @@ extends CharacterBody2D
 @onready var anim_player: AnimationPlayer = $AnimationPlayer
 @onready var stun_timer: Timer = $StunTimer
 @onready var flag_indicator: Label = $FlagIndicator
+@onready var player_camera: Camera2D = $PlayerCamera
 
 # -- Movement Constants --
 const WALK_SPEED: float = 120.0
@@ -32,6 +33,9 @@ var _carried_flag: Node = null
 @onready var spray_hitbox: Area2D = $SprayHitbox
 
 func _ready() -> void:
+	# Only enable camera for the local player
+	if is_multiplayer_authority():
+		player_camera.enabled = true
 	stun_timer.timeout.connect(_on_stun_timer_timeout)
 
 func _physics_process(delta: float) -> void:
