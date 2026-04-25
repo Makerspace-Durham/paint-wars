@@ -135,11 +135,11 @@ position = Vector2(1197, -25)
 
 [node name="ModeElements" type="Node2D" parent="."]
 
-[node name="PaintSpot" parent="ModeElements" instance=ExtResource("3_exxhr")]
+[node name="PaintSpot" parent="ModeElements" groups=["paint_spots"] instance=ExtResource("3_exxhr")]
 position = Vector2(-672, -1)
 
-[node name="PaintSpot2" parent="ModeElements" instance=ExtResource("3_exxhr")]
+[node name="PaintSpot2" parent="ModeElements" groups=["paint_spots"] instance=ExtResource("3_exxhr")]
 position = Vector2(672, 0)
 
-[node name="PaintSpot3" parent="ModeElements" instance=ExtResource("3_exxhr")]
+[node name="PaintSpot3" parent="ModeElements" groups=["paint_spots"] instance=ExtResource("3_exxhr")]
 position = Vector2(0, -160)

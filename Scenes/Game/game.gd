@@ -3,6 +3,11 @@ extends Node2D
 const CONQUEST_MAP = preload("res://Scenes/Game/Maps/conquest_map.tscn")
 const CTF_MAP = preload("res://Scenes/Game/Maps/ctf_map.tscn")
 const PLAYER_SCENE = preload("res://Scenes/Player/player.tscn")
+const BOT_SCENE = preload("res://Scenes/Bot/bot.tscn")
+
+# Tracks bot peer ids starting from a high number to avoid conflicts
+const BOT_ID_START: int = 1000
+var _next_bot_id: int = BOT_ID_START
 
 @onready var map_container: Node2D = $MapContainer
 
@@ -68,6 +73,7 @@ func _sync_teams(players: Dictionary) -> void:
 func _spawn_all_players() -> void:
 	if GameManager.is_practice_mode:
 		_spawn_player(1, Constants.TEAM_A)
+		_spawn_practice_bots()
 		return
 	for peer_id in Constants.players:
 		var player_data := Constants.get_player(peer_id)
@@ -84,6 +90,39 @@ func _spawn_player(peer_id: int, team: int) -> void:
 	player.global_position = spawns[spawn_index]
 	players_node.add_child(player)
 	_sync_player_spawn.rpc(peer_id, team, player.global_position)
+
+func _spawn_practice_bots() -> void:
+	# Fill Team A with bots (2 bots, local player is already on Team A)
+	for i in Constants.PLAYERS_PER_TEAM - 1:
+		_spawn_bot(Constants.TEAM_A)
+
+	# Fill Team B with bots (3 bots)
+	for i in Constants.PLAYERS_PER_TEAM:
+		_spawn_bot(Constants.TEAM_B)
+
+func _spawn_bot(team: int) -> void:
+	var bot := BOT_SCENE.instantiate()
+	var players_node := map_container.get_child(0).get_node("Players")
+	var bot_id := _next_bot_id
+	_next_bot_id += 1
+
+	# Register bot in Constants so scoring and team logic works
+	Constants.register_player(bot_id, {
+		"name": "Bot_%d" % bot_id,
+		"team": team,
+		"is_bot": true
+	})
+
+	bot.set_multiplayer_authority(1)  # Server owns all bots
+	bot.team = team
+	bot.add_to_group("players")
+
+	# Pick spawn position
+	var spawns = _spawn_points[team]
+	var spawn_index: int= (_next_bot_id - BOT_ID_START - 1) % spawns.size()
+	bot.global_position = spawns[spawn_index]
+
+	players_node.add_child(bot)
 
 @rpc("authority", "reliable")
 func _sync_player_spawn(peer_id: int, team: int, spawn_pos: Vector2) -> void:
@@ -106,6 +145,15 @@ func _on_host_disconnected() -> void:
 	_cleanup()
 
 func _cleanup() -> void:
+	# Clear bot entries from Constants
+	for peer_id in Constants.players.keys():
+		var data := Constants.get_player(peer_id)
+		if data.get("is_bot", false):
+			Constants.remove_player(peer_id)
+
+	# Reset bot id counter
+	_next_bot_id = BOT_ID_START
+
 	for player in get_tree().get_nodes_in_group("players"):
 		player.queue_free()
 	for child in map_container.get_children():

@@ -9,6 +9,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 script = ExtResource("1_j3ucw")
 
 [node name="Background" type="ColorRect" parent="."]
@@ -33,6 +35,7 @@ grow_vertical = 2
 
 [node name="TitleLabel" type="Label" parent="VBoxContainer"]
 layout_mode = 2
+size_flags_vertical = 2
 theme_override_font_sizes/font_size = 32
 text = "Paint Wars"
 horizontal_alignment = 1
@@ -43,51 +46,66 @@ layout_mode = 2
 
 [node name="HeaderLabel" type="Label" parent="VBoxContainer/ModeView"]
 layout_mode = 2
+size_flags_vertical = 2
 text = "Select Mode"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="ConquestButton" type="Button" parent="VBoxContainer/ModeView"]
 layout_mode = 2
+size_flags_vertical = 2
 text = "Conquest"
 
 [node name="CTFButton" type="Button" parent="VBoxContainer/ModeView"]
 layout_mode = 2
+size_flags_vertical = 2
 text = "Capture the Flag"
 
 [node name="PracticeButton" type="Button" parent="VBoxContainer/ModeView"]
 layout_mode = 2
+size_flags_vertical = 2
 text = "Practice"
 
 [node name="SettingsButton" type="Button" parent="VBoxContainer/ModeView"]
 visible = false
 layout_mode = 2
+size_flags_vertical = 2
 text = "Settings"
 
 [node name="QuitButton" type="Button" parent="VBoxContainer/ModeView"]
 layout_mode = 2
+size_flags_vertical = 2
 text = "Quit"
 
 [node name="HostJoinView" type="VBoxContainer" parent="VBoxContainer"]
 visible = false
 layout_mode = 2
 
-[node name="HeaderLabel" type="Label" parent="VBoxContainer/HostJoinView"]
+[node name="ModeInfoLabel" type="Label" parent="VBoxContainer/HostJoinView"]
 layout_mode = 2
+size_flags_vertical = 2
 text = "How do you want to play?"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="HostButton" type="Button" parent="VBoxContainer/HostJoinView"]
 layout_mode = 2
+size_flags_vertical = 2
 text = "Host"
 
 [node name="JoinButton" type="Button" parent="VBoxContainer/HostJoinView"]
 layout_mode = 2
+size_flags_vertical = 2
 text = "Join"
+
+[node name="StartPracticeButton" type="Button" parent="VBoxContainer/HostJoinView"]
+layout_mode = 2
+size_flags_vertical = 2
+text = "Start Practice"
 
 [node name="BackButton" type="Button" parent="VBoxContainer/HostJoinView"]
 layout_mode = 2
+size_flags_vertical = 2
 text = "Back"
 
 [connection signal="pressed" from="VBoxContainer/ModeView/ConquestButton" to="." method="_on_conquest_button_pressed"]
@@ -97,4 +115,5 @@ text = "Back"
 [connection signal="pressed" from="VBoxContainer/ModeView/QuitButton" to="." method="_on_quit_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/HostJoinView/HostButton" to="." method="_on_host_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/HostJoinView/JoinButton" to="." method="_on_join_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/HostJoinView/StartPracticeButton" to="." method="_on_start_practice_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/HostJoinView/BackButton" to="." method="_on_back_button_pressed"]
