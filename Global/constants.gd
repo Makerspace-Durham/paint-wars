@@ -5,7 +5,7 @@ const TEAM_A: int = 0
 const TEAM_B: int = 1
 
 # Game Modes
-enum GameMode { CONQUEST, CAPTURE_THE_FLAG }
+enum GameMode { CONQUEST, CAPTURE_THE_FLAG, TIME_ATTACK }
 
 # Conquest
 const CONQUEST_WIN_SCORE: int = 100
@@ -16,6 +16,10 @@ const CONQUEST_SCORE_TICK_RATE: float = 1.0   # seconds between point ticks
 
 # CTF
 const CTF_WIN_CAPTURES: int = 3
+
+#Time Attack
+const TIME_ATTACK_DURATION = 30.0
+const TIME_ATTACK_MAX_COINS = 5
 
 # Player
 const SPRAY_COOLDOWN: float = 0.5       # seconds

@@ -78,3 +78,7 @@ func _on_start_practice_button_pressed() -> void:
 func _on_back_button_pressed() -> void:
 	GameManager.is_practice_mode = false
 	_show_mode_view()
+
+
+func _on_time_attack_button_pressed() -> void:
+	UiManager.go_to_scene("res://Scenes/UI/TimeAttackLeaderboard/time_attack_leaderboard.tscn")

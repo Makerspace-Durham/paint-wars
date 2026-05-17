@@ -34,6 +34,8 @@ func _set_mode_label() -> void:
 			mode_label.text = "Conquest — First to %d" % Constants.CONQUEST_WIN_SCORE
 		Constants.GameMode.CAPTURE_THE_FLAG:
 			mode_label.text = "CTF — First to %d Captures" % Constants.CTF_WIN_CAPTURES
+		Constants.GameMode.TIME_ATTACK:
+			mode_label.text = "Time Attack"
 
 func _reset_scores() -> void:
 	team_a_score.text = "Team A: 0"

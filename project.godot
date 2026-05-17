@@ -22,6 +22,7 @@ Constants="*res://Global/constants.gd"
 GameManager="*res://Global/game_manager.gd"
 UiManager="*res://Global/UiManager/ui_manager.tscn"
 Network="*res://Global/network.gd"
+Leaderboard="*res://Global/leaderboard.gd"
 
 [display]
 

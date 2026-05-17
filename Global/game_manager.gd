@@ -3,6 +3,7 @@ extends Node
 var current_mode: Constants.GameMode = Constants.GameMode.CONQUEST
 var is_practice_mode: bool = false
 var game_active: bool = false
+var time_attack_last_score: int = 0
 
 # -- Scores --
 var team_scores: Dictionary = {

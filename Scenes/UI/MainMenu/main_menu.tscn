@@ -61,6 +61,11 @@ layout_mode = 2
 size_flags_vertical = 2
 text = "Capture the Flag"
 
+[node name="TimeAttackButton" type="Button" parent="VBoxContainer/ModeView"]
+layout_mode = 2
+size_flags_vertical = 2
+text = "Time Attack"
+
 [node name="PracticeButton" type="Button" parent="VBoxContainer/ModeView"]
 layout_mode = 2
 size_flags_vertical = 2
@@ -109,6 +114,7 @@ text = "Back"
 
 [connection signal="pressed" from="VBoxContainer/ModeView/ConquestButton" to="." method="_on_conquest_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/ModeView/CTFButton" to="." method="_on_ctf_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/ModeView/TimeAttackButton" to="." method="_on_time_attack_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/ModeView/PracticeButton" to="." method="_on_practice_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/ModeView/SettingsButton" to="." method="_on_settings_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/ModeView/QuitButton" to="." method="_on_quit_button_pressed"]
