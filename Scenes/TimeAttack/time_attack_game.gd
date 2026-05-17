@@ -129,3 +129,8 @@ func _end_game() -> void:
 	# Store score for the results screen to read
 	GameManager.time_attack_last_score = score
 	UiManager.go_to_scene("res://Scenes/UI/TimeAttackResults/time_attack_results.tscn")
+
+
+func _on_area_2d_body_entered(body: Node2D) -> void:
+	body.queue_free()
+	_spawn_player()

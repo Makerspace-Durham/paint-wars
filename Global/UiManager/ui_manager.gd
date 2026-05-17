@@ -23,8 +23,11 @@ func go_to_scene(path: String) -> void:
 # -- HUD --
 
 func _on_game_started() -> void:
-	hud.visible = true
 	win_screen.visible = false
+	if GameManager.current_mode == Constants.GameMode.TIME_ATTACK:
+		hud.visible = false
+		return
+	hud.visible = true
 	_set_mode_label()
 	_reset_scores()
 
