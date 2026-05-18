@@ -142,7 +142,41 @@ func _get_action_key_string(action: String) -> String:
 			return event.as_text()
 		elif event is InputEventMouseButton:
 			return "Mouse %d" % event.button_index
+		elif event is InputEventJoypadButton:
+			return _get_xbox_button_name(event.button_index)
+		elif event is InputEventJoypadMotion:
+			return _get_xbox_axis_name(event.axis, event.axis_value)
 	return "Unbound"
+
+func _get_xbox_button_name(button_index: int) -> String:
+	match button_index:
+		0: return "A"
+		1: return "B"
+		2: return "X"
+		3: return "Y"
+		4: return "LB"
+		5: return "RB"
+		6: return "LT"
+		7: return "RT"
+		8: return "Back"
+		9: return "Start"
+		10: return "L Stick"
+		11: return "R Stick"
+		12: return "D-Pad Up"
+		13: return "D-Pad Down"
+		14: return "D-Pad Left"
+		15: return "D-Pad Right"
+		_: return "Button %d" % button_index
+
+func _get_xbox_axis_name(axis: int, value: float) -> String:
+	match axis:
+		0: return "L Stick Left" if value < 0 else "L Stick Right"
+		1: return "L Stick Up" if value < 0 else "L Stick Down"
+		2: return "R Stick Left" if value < 0 else "R Stick Right"
+		3: return "R Stick Up" if value < 0 else "R Stick Down"
+		4: return "LT"
+		5: return "RT"
+		_: return "Axis %d" % axis
 
 func _on_keybind_button_pressed(action: String, btn: Button) -> void:
 	if _awaiting_rebind != "":
@@ -153,13 +187,18 @@ func _on_keybind_button_pressed(action: String, btn: Button) -> void:
 func _input(event: InputEvent) -> void:
 	if _awaiting_rebind == "":
 		return
-	if not (event is InputEventKey or event is InputEventMouseButton):
+	if not (event is InputEventKey or event is InputEventMouseButton \
+		or event is InputEventJoypadButton or event is InputEventJoypadMotion):
 		return
 	if not event.pressed:
 		return
 
-	# Cancel rebind on Escape
+	# Cancel on Escape or Start button
 	if event is InputEventKey and event.keycode == KEY_ESCAPE:
+		_keybind_buttons[_awaiting_rebind].text = _get_action_key_string(_awaiting_rebind)
+		_awaiting_rebind = ""
+		return
+	if event is InputEventJoypadButton and event.button_index == 9:
 		_keybind_buttons[_awaiting_rebind].text = _get_action_key_string(_awaiting_rebind)
 		_awaiting_rebind = ""
 		return

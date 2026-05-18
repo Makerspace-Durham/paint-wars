@@ -1,5 +1,8 @@
 extends Node
 
+# Controller
+const STICK_DEADZONE: float = 0.2
+
 # Teams
 const TEAM_A: int = 0
 const TEAM_B: int = 1

@@ -56,9 +56,14 @@ func _physics_process(delta: float) -> void:
 # -- Movement --
 
 func _handle_movement() -> void:
+	# Combines keyboard and analog stick input
 	var direction := Input.get_axis("move_left", "move_right")
-	var speed := WALK_SPEED
 
+	# Apply deadzone for analog stick
+	if abs(direction) < Constants.STICK_DEADZONE:
+		direction = 0.0
+
+	var speed := WALK_SPEED
 	if Input.is_action_pressed("run") and not is_carrying_flag:
 		speed = RUN_SPEED
 

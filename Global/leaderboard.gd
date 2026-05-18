@@ -67,3 +67,8 @@ func load_leaderboard() -> void:
 
 func _compare_entries(a: Dictionary, b: Dictionary) -> bool:
 	return a["score"] > b["score"]
+
+func delete_leaderboard() -> void:
+	var file := FileAccess.open(LEADERBOARD_PATH, FileAccess.WRITE_READ)
+	if file:
+		DirAccess.remove_absolute(LEADERBOARD_PATH)

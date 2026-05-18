@@ -69,6 +69,7 @@ size_flags_vertical = 2
 text = "Time Attack"
 
 [node name="PracticeButton" type="Button" parent="VBoxContainer/ModeView"]
+visible = false
 layout_mode = 2
 size_flags_vertical = 2
 text = "Practice"

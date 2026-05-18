@@ -59,6 +59,7 @@ func _on_settings_button_pressed() -> void:
 	UiManager.go_to_scene("res://Scenes/UI/Settings/settings.tscn")
 
 func _on_quit_button_pressed() -> void:
+	Leaderboard.delete_leaderboard()
 	get_tree().quit()
 
 # -- Host / Join --
