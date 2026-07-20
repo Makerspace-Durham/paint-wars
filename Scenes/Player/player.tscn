@@ -1,7 +1,8 @@
-[gd_scene load_steps=28 format=3 uid="uid://dashgvk7hnnew"]
+[gd_scene format=3 uid="uid://dashgvk7hnnew"]
 
 [ext_resource type="Script" uid="uid://3aif2gfe4kgv" path="res://Scenes/Player/player.gd" id="1_a3d8c"]
 [ext_resource type="Texture2D" uid="uid://jbkn05wrmpp5" path="res://Assets/Characters/Bomber_PLACEHOLDER.png" id="1_uvnfx"]
+[ext_resource type="Texture2D" uid="uid://hfhup7hqrp8d" path="res://Assets/Characters/Bomber.png" id="3_xpcdj"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_uvnfx"]
 atlas = ExtResource("1_uvnfx")
@@ -31,9 +32,33 @@ region = Rect2(448, 0, 32, 32)
 atlas = ExtResource("1_uvnfx")
 region = Rect2(128, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_a3d8c"]
-atlas = ExtResource("1_uvnfx")
-region = Rect2(128, 0, 32, 32)
+[sub_resource type="AtlasTexture" id="AtlasTexture_hnuln"]
+atlas = ExtResource("3_xpcdj")
+region = Rect2(768, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aqm4k"]
+atlas = ExtResource("3_xpcdj")
+region = Rect2(800, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rcvs5"]
+atlas = ExtResource("3_xpcdj")
+region = Rect2(832, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h8ma5"]
+atlas = ExtResource("3_xpcdj")
+region = Rect2(864, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eksi1"]
+atlas = ExtResource("3_xpcdj")
+region = Rect2(896, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jincj"]
+atlas = ExtResource("3_xpcdj")
+region = Rect2(512, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rqdc0"]
+atlas = ExtResource("3_xpcdj")
+region = Rect2(544, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_oikmp"]
 atlas = ExtResource("1_uvnfx")
@@ -55,9 +80,13 @@ region = Rect2(224, 0, 32, 32)
 atlas = ExtResource("1_uvnfx")
 region = Rect2(256, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_hnuln"]
-atlas = ExtResource("1_uvnfx")
-region = Rect2(128, 0, 32, 32)
+[sub_resource type="AtlasTexture" id="AtlasTexture_qr1w5"]
+atlas = ExtResource("3_xpcdj")
+region = Rect2(992, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ythyg"]
+atlas = ExtResource("3_xpcdj")
+region = Rect2(1024, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xpcdj"]
 atlas = ExtResource("1_uvnfx")
@@ -81,7 +110,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_uvnfx")
 }],
-"loop": false,
+"loop": 0,
 "name": &"fall",
 "speed": 1.0
 }, {
@@ -101,31 +130,49 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_74mp2")
 }],
-"loop": true,
+"loop": 1,
 "name": &"glide",
 "speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_ks1b7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hnuln")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aqm4k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rcvs5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h8ma5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eksi1")
 }],
-"loop": false,
+"loop": 0,
 "name": &"hurt",
 "speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_a3d8c")
+"texture": SubResource("AtlasTexture_jincj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rqdc0")
 }],
-"loop": true,
+"loop": 1,
 "name": &"idle",
-"speed": 1.0
+"speed": 3.0
 }, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_oikmp")
 }],
-"loop": false,
+"loop": 0,
 "name": &"jump",
 "speed": 1.0
 }, {
@@ -142,15 +189,18 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_r5xpd")
 }],
-"loop": true,
+"loop": 1,
 "name": &"run",
 "speed": 12.0
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_hnuln")
+"texture": SubResource("AtlasTexture_qr1w5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ythyg")
 }],
-"loop": false,
+"loop": 1,
 "name": &"spray",
 "speed": 5.0
 }, {
@@ -167,7 +217,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_dd0ac")
 }],
-"loop": true,
+"loop": 1,
 "name": &"walk",
 "speed": 8.0
 }]
@@ -232,33 +282,31 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a3d8c"]
 size = Vector2(19, 19)
 
-[node name="Player" type="CharacterBody2D"]
+[node name="Player" type="CharacterBody2D" unique_id=5478444]
 script = ExtResource("1_a3d8c")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=434335287]
 position = Vector2(0, -16)
 sprite_frames = SubResource("SpriteFrames_0u5uq")
-animation = &"spray"
+animation = &"idle"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1942020581]
 position = Vector2(1, -15)
 shape = SubResource("CapsuleShape2D_a3d8c")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_xpcdj")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=766020690]
+libraries/ = SubResource("AnimationLibrary_xpcdj")
 
-[node name="SprayHitbox" type="Area2D" parent="."]
+[node name="SprayHitbox" type="Area2D" parent="." unique_id=1167289808]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="SprayHitbox"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SprayHitbox" unique_id=978198]
 position = Vector2(21.5, -15.5)
 shape = SubResource("RectangleShape2D_a3d8c")
 debug_color = Color(1, 0, 0, 0.41960785)
 
-[node name="StunTimer" type="Timer" parent="."]
+[node name="StunTimer" type="Timer" parent="." unique_id=1299891599]
 
-[node name="FlagIndicator" type="Label" parent="."]
+[node name="FlagIndicator" type="Label" parent="." unique_id=972541859]
 visible = false
 offset_left = -3.0
 offset_top = -52.0
@@ -266,7 +314,7 @@ offset_right = 11.0
 offset_bottom = -29.0
 text = "⚑"
 
-[node name="PlayerCamera" type="Camera2D" parent="."]
+[node name="PlayerCamera" type="Camera2D" parent="." unique_id=407658364]
 enabled = false
 position_smoothing_enabled = true
 drag_horizontal_enabled = true
